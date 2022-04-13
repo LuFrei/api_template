@@ -8,6 +8,7 @@ const saltRounds = 2;
 
 const {User, Item} = require('./models');
 const { use } = require("bcrypt/promises");
+const user = require('./api/user');
 
 // initialise Express
 const app = express();
@@ -19,6 +20,8 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.send('<h1>App Running</h1>')
 })
+
+app.use('/user', user);
 
 app.listen(3000, () => {
   console.log("Server running on port 3000");
